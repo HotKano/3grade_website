@@ -2,6 +2,8 @@
 3학년 졸업프로젝트 website - 김종우
 dpsw23@naver.com
 
+http://dpsw23.dothome.co.kr
+
 - PHP 및 MySQL을 이용한 로그인 및 회원가입을 구현
 - css를 이용한 반응형 웹 디자인
 - JavaScript를 이용한 기능 구현 (팝업, 각 종 태그의 값 유무 확인)
