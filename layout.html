@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      #jb-container {
+        width: 1152px;
+        margin: 0px auto;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+
+	  #jb-header {
+        padding: 20px;
+        margin-bottom: 40px;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-content {
+        width: 580px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 1px solid #bcbcbc;
+      }
+      #jb-sidebar {
+        width: 260px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+        border: 1px solid #bcbcbc;
+		overflow : auto;
+      }
+      #jb-footer {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="jb-container">
+      <div id="jb-header" align='center'>
+	  <table valign='center' cellspacing='0' cellpadding='0'>
+        <tr>
+		<td valign='center' align = 'left'>
+		<p> <img src = "images/love.jpg" width="200" height="190"> </p>
+		</td>
+
+		<td valign='center' align = 'right'>
+		<p> <?php include("menu.html"); ?> </p>
+		</td>
+		</tr>
+	</table>
+      </div>
+      <div id="jb-content">
+        <h2>Content</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis nulla. Phasellus lacinia tempus mauris eu laoreet. Proin gravida velit dictum dui consequat malesuada. Aenean et nibh eu purus scelerisque aliquet nec non justo. Aliquam vitae aliquet ipsum. Etiam condimentum varius purus ut ultricies. Mauris id odio pretium, sollicitudin sapien eget, adipiscing risus.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec mollis nulla. Phasellus lacinia tempus mauris eu laoreet. Proin gravida velit dictum dui consequat malesuada. Aenean et nibh eu purus scelerisque aliquet nec non justo. Aliquam vitae aliquet ipsum. Etiam condimentum varius purus ut ultricies. Mauris id odio pretium, sollicitudin sapien eget, adipiscing risus.</p>
+      </div>
+      <div id="jb-sidebar" align='center'>
+	  <table>
+	  <tr>
+	  <td> <?php include("left.html"); ?> </td>
+	  <td> <?php include("w.php"); ?> </td>
+	 </tr>
+	 </table>
+      </div>
+      <div id="jb-footer">
+        <p>(재) 아이마미 | 대표 : 김종우 | Tel 062-372-7243 | 010-4100-7243</p>
+      </div>
+    </div>
+  </body>
+</html>

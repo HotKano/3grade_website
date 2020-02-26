@@ -1,0 +1,192 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/style2.css" />
+
+  </head>
+
+      <style>
+
+	  body{
+	  	
+		background-image: url("./images/bg.png");
+		background-size: cover cover;
+		background-repeat: no-repeat;
+		
+		
+		}
+
+		</style>
+ 
+
+  <body style="overflow-x:hidden; overflow-y:auto;">
+
+	<div id="jw-container">
+      
+		<table align='center' cellpadding="0" cellspacing="0">
+		<tr>
+			<td align='center'> <?php include("menu.html"); ?> </td>
+		</tr>
+		</table>
+    	 
+	 <div id="jw-sidebar">
+		<table align ='center'>
+
+		<tr>
+		<td align='center'> <iframe width='190' height='100%' frameborder=0 scrolling='no' src="w.php"></iframe> </td>
+		</tr>
+
+		<tr>
+		<td align='center'> <?php include("count.php"); ?> </td>
+		</tr>
+		</table>
+
+      </div>
+	      
+      <div id="jw-content">
+		<table border='0'  width='800' height=600 align=center>
+		<tr height='100%'>
+		<td width='720' valign='top'>
+
+		<?PHP
+
+		$con = mysql_connect("localhost","dpsw23","dbfak333");
+		mysql_select_db("dpsw23",$con);
+
+		$board = $_GET[board];
+		$id = $_GET[id];
+
+		// 한글 변환
+		mysql_query("set session character_set_connection=utf8;");
+		mysql_query("set session character_set_results=utf8;");
+		mysql_query("set session character_set_client=utf8;");
+
+		$result=mysql_query("select * from $board where id=$id",$con);
+
+		// 각 필드에 해당하는 데이터를 뽑아 내는 과정
+		$id=mysql_result($result,0,"id");
+		$writer=mysql_result($result,0,"writer");
+		$topic=mysql_result($result,0,"topic");
+		$hit=mysql_result($result,0,"hit");
+
+		$hit = $hit +1;   //조회수를 하나 증가
+		mysql_query("update $board set hit=$hit where id=$id",$con);
+
+		$wdate=mysql_result($result,0,"wdate");
+		$content=mysql_result($result,0,"content");
+
+		switch($board){
+
+		case 'notice' : $title = "공 지 사 항"; break;
+		case 'customer' : $title = "자 유 게 시 판"; break;
+
+		default : echo ("<script> window.alert('잘못된 경로로 진입하셨습니다.') history.go(-1);</script>");
+
+
+
+		}
+
+		// 테이블로부터 읽은 내용을 화면에 디스플레이
+		echo("
+			<table align='center' border=0 width=800>
+			<tr><td align=center><h1> $title </h1></td></tr>
+			</table>
+
+			<table border=0 width=800 bgcolor=white>
+			<tr>
+			<td width=100 bgcolor=#95f3c3>번호: $id</td>
+			<td width=200 bgcolor=#95f3c3>글쓴이: $writer </td>
+			<td width=300 bgcolor=#95f3c3>글쓴날짜: $wdate</td>
+			<td width=100 bgcolor=#95f3c3>조회: $hit</td>
+			</tr>
+			<tr>
+			<td colspan=4><b><font size=5 color=#ea9229>제목: $topic</font></b></td>
+			</tr>
+			<tr>
+			<td colspan=4><pre>$content</pre></td>
+			</tr>
+			</table>
+
+			<table align=center border=0 width=700>
+			");
+
+			if($_COOKIE[UserName]==$writer || $_COOKIE[UserID]=='admin'){
+
+
+			echo("
+			<tr><td align=center>
+			<a href=modify.php?board=$board&id=$id><button>수정</button></a>
+			<a href=delete.php?board=$board&id=$id><button>삭제</button></a>
+			<a href=show.php?board=$board><button>목록</button></a>
+			<a href=con_reply.php?board=$board&id=$id><button>답변</button></a>
+			
+			
+			</td></tr>
+			
+			");
+			} else if (!$_COOKIE[UserID] || $board == 'notice') {
+			echo("
+			<tr><td align=center>
+			<a href=show.php?board=$board><button>목록</button></a>
+			</td></tr>
+			
+			");
+
+			} else if ($board != 'notice') {
+
+			echo("
+			<tr><td align=center>
+			<a href=show.php?board=$board><button>목록</button></a>
+			<a href=con_reply.php?board=$board&id=$id><button>답변</button></a>
+			
+			
+			</td></tr>
+			
+			");
+
+			}
+
+		if($board =='customer'){
+		
+			echo ("<tr>");
+			echo("<td align=left>");
+			include ('reply.php');
+			echo("</td>");
+			echo("	</tr> ");
+
+			echo ("<tr>");
+			echo("<td align=center>");
+		
+		
+			include ('replyInput.php');
+	
+			echo("</td>");
+		echo("	</tr> ");
+				
+
+			}
+
+		echo ("</table>");
+
+
+		?>
+
+
+
+		</td></tr>
+		</table>
+      </div>
+
+ 
+
+      <div id="jw-footer">
+       (재) 아이마미 | 대표 : 김종우 | Tel 062-372-7243 | 010-4100-7243
+      </div>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,192 @@
+﻿<html lang="ko-KR">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="description" content="The Overflowing church website's main page" />
+    <meta name="author" content="unikys@gmail.com" />
+    <title>모두 핸드메이드지은</title>
+    <style>
+                #jinyinfo {
+                        height: 30px;
+                        width: 400px;
+						margin-left: -300px;
+						margin-bottom: 10px;
+						padding: 0px;
+                }
+
+                #jinyinfo ul li {
+                        list-style: none;
+                        color: white;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+                #jinyinfo .menuLink {
+                        text-decoration:none;
+                        color: black;
+                        display: block;
+                        width: 120px;
+                        font-size: 12px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+                }
+                #jinyinfo .menuLink:hover {
+                        color: red;
+						
+                       
+                }
+
+
+    </style>
+</head>
+
+<body>
+<?PHP if (!$_COOKIE[UserID]) { ?>
+   <div id="jinyinfo" >
+                <ul>
+                        <li><a class="menuLink" href="./index.html">홈</a></li>
+                        <li><a class="menuLink" href="./login.html">로그인</a></li>
+						<li><a class="menuLink" href="./join.html">회원가입</a></li>
+
+                </ul>
+    </div>
+
+<?PHP } else if($_COOKIE[UserID]=='admin'){ ?>
+ <style>
+			#jinyinfo {
+                        height: 30px;
+                        width: 550px;
+						margin-left: -300px;
+						margin-bottom: 10px;
+						padding: 0px;
+				}
+
+						#jinyinfo ul li {
+									list-style: none;
+									color: white;
+									float: left;
+									line-height: 30px;
+									vertical-align: middle;
+									text-align: center;
+							}
+
+							#jinyinfo .menuLink2 {
+
+									text-decoration:none;
+									color: black;
+									display: block;
+									width: 120px;
+									font-size: 12px;
+									font-weight: bold;
+									font-family: "Trebuchet MS";
+
+							}
+
+							#jinyinfo .menuLink2:hover {
+								color: red;
+	
+							   
+							 }
+
+							.menuLink3 {
+
+									text-decoration:none;
+									color: red;
+									display: block;
+									width: 150px;
+									font-size: 11px;
+									font-weight: bold;
+									font-family: "Trebuchet MS";
+
+							}
+
+
+
+
+</style>
+
+   <div id="jinyinfo" >
+                <ul>
+
+					<li><a class="menuLink3" > <font color = 'black'> <?PHP echo $_COOKIE[UserName] ?> 님 반갑습니다.</font> </a></li>
+					<li><a class="menuLink2" href="./index.html"> 홈 </a></li>
+					<li><a class="menuLink2" href="./logout.php"> 로그아웃 </a></li>
+					<li><a class="menuLink2" href="./admin.html"> 관리페이지 </a></li>
+						
+                </ul>
+</div>
+
+
+
+
+ <?PHP } else if($_COOKIE[UserID]) { ?>
+<style>
+
+	#jinyinfo {
+                        height: 30px;
+                        width: 530px;
+						margin-left: -300px;
+						margin-bottom: 10px;
+						padding: 0px;
+	}
+
+	#jinyinfo ul li {
+                        list-style: none;
+                        color: white;
+                        float: left;
+                        line-height: 30px;
+                        vertical-align: middle;
+                        text-align: center;
+                }
+
+				#jinyinfo .menuLink3 {
+
+                        text-decoration:none;
+                        color: black;
+                        display: block;
+                        width: 120px;
+                        font-size: 12px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+
+				}
+
+				#jinyinfo .menuLink3:hover {
+						color: red;
+						
+                }
+
+				.menuLink4 {
+
+                        text-decoration:none;
+                        color: black;
+                        display: block;
+                        width: 130px;
+                        font-size: 11px;
+                        font-weight: bold;
+                        font-family: "Trebuchet MS";
+
+				}
+
+
+</style>
+  
+  <div id="jinyinfo" >
+                <ul>
+
+					<li><a class="menuLink4" > <?PHP echo $_COOKIE[UserName] ?> 님 반갑습니다!</font> </a></li>
+					<li><a class="menuLink3" href="./index.html"> 홈 </a></li>
+					<li><a class="menuLink3" href="./logout.php"> 로그아웃 </a></li>
+					<li><a class="menuLink3" href="./mypage.php"> 마이페이지 </a></li>
+						
+                </ul>
+  </div>
+
+
+
+  <?php } ?>
+</body>
+
+</html>
+

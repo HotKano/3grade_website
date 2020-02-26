@@ -1,0 +1,48 @@
+﻿<HTML> 
+<HEAD> 
+<TITLE> JASKO Sample Script </TITLE> 
+
+<!------1. 아래의 코드를 HEAD 부분에 복사해 넣으세요 ------------------------------> 
+
+<SCRIPT LANGUAGE=JAVASCRIPT TYPE="TEXT/JAVASCRIPT"> 
+<!-- 
+expireDate = new Date 
+expireDate.setMonth(expireDate.getMonth()+6) 
+hitCt = eval(cookieVal("pageHit")) 
+hitCt++ 
+document.cookie = "pageHit="+hitCt+";expires=" + expireDate.toGMTString() 
+
+function cookieVal(cookieName) { 
+thiscookie = document.cookie.split("; ") 
+for (i=0; i<thiscookie.length; i++) { 
+if (cookieName == thiscookie[i].split("=")[0]) { 
+return thiscookie[i].split("=")[1] 
+} 
+} 
+return 0 
+} 
+
+// --> 
+</SCRIPT> 
+
+<!------------------------- 여기까지 ----------------------------------> 
+
+</HEAD> 
+
+<BODY> 
+
+<H3 align=center> 
+
+<!----- 2. 아래의 방법으로 코드를 원하는 장소에 붙여 넣습니다 -------------> 
+
+<SCRIPT LANGUAGE=JAVASCRIPT TYPE="TEXT/JAVASCRIPT"> 
+<!-- 
+document.write("제 홈페이지에 <font color=red>" + hitCt + "</font> 번째 방문자이시네요.") 
+//--> 
+</SCRIPT> 
+
+<!------------------------- 여기까지 ----------------------------------> 
+
+</H3> 
+</BODY> 
+</HTML>

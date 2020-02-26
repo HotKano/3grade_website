@@ -1,0 +1,147 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="./css/style2.css" />
+    <style>
+
+	textarea {
+    resize: none;
+
+	}
+
+    </style>
+
+  </head>
+
+  <body style="overflow-x:hidden; overflow-y:auto;">
+
+
+	<div id="jw-container">
+      
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<td align='center'> <?php include("menu.html"); ?> </td>
+		</tr>
+		</table>
+    	 
+	 <div id="jw-sidebar">
+		<table align ='center'>
+
+		<tr>
+        <td align='center'> <?php include("left.html"); ?> </td>
+		</tr>
+
+		<tr>
+		<td align='center'> <iframe width='190' height='100%' frameborder=0 scrolling='no' src="w.php"></iframe> </td>
+		</tr>
+
+		<tr>
+		<td align='center'> <?php include("count.php"); ?> </td>
+		</tr>
+		</table>
+
+      </div>
+	      
+      <div id="jw-content">
+		<table border='0' align='center' width='700'>
+			<tr>
+			<td width='700' valign='top'>
+
+			
+
+<script>
+			function id_check() {
+			var id = document.comma.uid.value;
+			if (id.length < 5) {
+				window.alert('ID는 5글자 이상 입력해주세요');
+			} else {
+				window.open('id_check.php?id=' + id, 'IDCHECK', 'width=450, height=180, scrollbars=yes');
+			}
+			}
+
+			function go_zip() {
+			window.open('zipcode.php','ZIP','width=470, height=180, scrollbars=yes');
+			}
+</script>
+
+
+
+			<form action=register.php method=post name=comma>
+
+			<table width=670 border=0 cellpadding=0 cellspacing=5>
+			<tr><td height=40 align=center><b>[회원 가입 폼]</b></td></tr>
+			</table>
+
+			<table border=1 width=670>
+			<tr><td>
+
+			<table width=670 align='left' border=0>
+			 <tr>
+				<td width=5% align=right>*</td>
+				<td width=15%   height=30><font size=2>회원 ID</td>
+				<td width=80%> <input type=text size=10 name=uid><font size=2 color=blue>[ <a   href='javascript:id_check()'><font color=blue>ID중복검사</font></a> ]</td>
+			 </tr>
+			 <tr>
+				<td align=right>*</td>
+				<td height=30><font size=2>비밀번호</font></td>
+				<td><input type=password   maxlength=15 style="height:20;" size=20 name=upass1></td>
+			 </tr>
+			 <tr>
+				<td align=right>*</td>
+				<td height=30><font size=2>비밀번호확인</font></td>
+				<td><input type=password   maxlength=15 style="height:20;" size=20 name=upass2></td>
+			 </tr>
+			 <tr>
+				<td align=right>*</td>
+				<td height=30><font size=2>이 름</font></td>
+				<td><input type=text size=10 name=uname></td>
+			 </tr>
+			 <tr>
+				<td align=right>*</td>
+				<td height=30><font size=2>휴대전화</font></td>
+				<td><input type=text size=20 name=mphone></td>
+			 </tr>
+			 <tr>
+				<td align=right>*</td>
+				<td height=30><font size=2>이메일</td>
+				<td><input type=text size=30 name=email></td>
+			 </tr>
+			 <tr>
+				<td align=right>*</td>
+				<td height=30><font size=2>집주소</td>
+				<td><input type=text size=7   name=zip readonly=readonly><font size=2 color=blue>[<a href='javascript:go_zip()'> <font color=blue>우편번호검색</font> </a>]</font><br><input type=text size=50 name=addr1 readonly=readonly><br><input   type=text size=35 name=addr2></td>
+			</tr>
+			</table> 
+
+			  </td></tr>
+			</table>
+			  
+			<table width=670 border=0 cellpadding=0 cellspacing=5>
+			<tr><td height=40 align=center><input type=submit value="회원가입신청"></td></tr>
+			</table>
+
+			</form>
+			</td></tr>
+			</table>
+
+
+			
+
+
+      </div>
+
+ 
+
+      <div id="jw-footer">
+       (재) 아이마미 | 대표 : 김종우 | Tel 062-372-7243 | 010-4100-7243
+      </div>
+
+    </div>
+
+  </body>
+
+
+</html>

@@ -1,0 +1,35 @@
+﻿<?PHP if (!$_COOKIE[UserID]) { ?>
+
+<table width='170' cellspacing='0' cellpadding='0' border='1' align='center' bgcolor=white>
+<tr><td>
+<form method='post' action='login.php' onsubmit="if(!this.uid.value || !this.upass.value) return false;">
+<table border='0' width='170'>
+        <tr><td align='right'><img src="images/text_id.png"> </td><td><input type='text' size='10' name='uid'></td></tr>
+	<tr><td align='right'><img src="images/text_pass.png"> </td><td><input type='password' size='10' name='upass'></td></tr>
+	<tr><td colspan='2' align='center'><input type='image' src="images/loginidpw.jpg" name='submit'></td></tr>
+</form>
+</table>
+
+
+<table width='160' cellspacing='0' cellpadding='0' border='0' align='center'>
+<tr><td align='center'><a href='join.html'><img src="images/signup.jpg" width='60' height='25'></a>
+&nbsp;&nbsp;&nbsp;<a href='findidpw.php'><img src="images/lostpw.jpg" width='60' height='25'> </a></td></tr>
+</table>
+
+</td></tr>
+</table>
+
+<?PHP } else { ?>
+
+<table width='160' cellspacing='0' cellpadding='0' border='2' align='center' bgcolor=white rules='none'>
+<tr height='85'><td align='center'><b><?PHP echo $_COOKIE[UserName]; ?></b>님 반갑습니다</td></tr>
+
+<?php if ($_COOKIE[UserID] != 'admin'){ ?>
+<tr><td align='center'><a href='mypage.php'><img src="images/mypage.jpg" width='60' height='25'></a>
+<?PHP } else { ?>
+<tr><td align='center'><a href='admin.html'><img src="images/admin.jpg" width='60' height='25'></a>
+<?PHP } ?>
+&nbsp;&nbsp;&nbsp;<a href='logout.php'><img src="images/logoutbt.jpg" width='60' height='25'></a></td></tr>
+</table>
+<?PHP } ?>
+

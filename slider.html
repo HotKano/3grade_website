@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./css/swiper.min.css">
+
+    <!-- Demo styles -->
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+	a{text-decoration:none; color: blue}
+    </style>
+</head>
+<body>
+
+<?php
+
+				$kind = $_POST[kind];
+				if(!$kind)
+				$kind = 1;
+
+
+
+?>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide"> 
+				<table height='350'>
+				<td width=100% align='center'>
+				<?PHP	
+
+								$con = mysql_connect("localhost","dpsw23","dbfak333");
+								mysql_select_db("dpsw23",$con);
+
+								// 한글 변환
+								mysql_query("set session character_set_connection=utf8;");
+								mysql_query("set session character_set_results=utf8;");
+								mysql_query("set session character_set_client=utf8;");
+
+
+								
+							  $kind = 0;
+
+								
+								  	   $result = mysql_query("select * from product where kind=$kind order by id desc", $con);
+									   //echo ("<img src='./images/best.jpg' width=650 border=0 align=center><br>");
+										
+
+								$total = mysql_num_rows($result);
+
+					
+								echo ("<table border=0 width=600> <td align=center width=200 bgcolor=#3ca03c> <a href=./p-list.php?kind=0 target=_top> <font color=white>읽어주는 책</font></a> </td> </table>");
+								echo   ("<table border=0 width=600 height=200 background='images/bookHolder.jpg'><tr>");
+								
+								
+
+								if (!$total){
+									echo ("<td align=center><font color=red>아직 등록된 상품이 없습니다</td>");
+								}	else {
+											  if ($cpage=='') $cpage=1; // $cpage -  현재 페이지 번호
+											  $pagesize = 3;              // $pagesize - 한 페이지에 출력할 목록 개수
+
+											  $totalpage = (int)($total/$pagesize);
+											  if (($total%$pagesize)!=0) $totalpage = $totalpage + 1;
+
+											  $counter=0;
+
+											  while($counter<$pagesize && $counter < 15):
+												$newcounter=($cpage-1)*$pagesize+$counter; // 실제 결과 레코드 카운터
+												if ($newcounter == $total) break; 
+
+										if ($newcounter > 0 && ($newcounter % 3) == 0) echo ("</tr><tr><td colspan=3></td></tr><tr>");
+
+										$code=mysql_result($result,$newcounter,"code");
+										$name=mysql_result($result,$newcounter,"name");
+										$userfile=mysql_result($result,$newcounter,"userfile");
+										$writer=mysql_result($result,$newcounter,"writer");
+
+										echo ("<td width=135  align=center><a href=p-show.php?code=$code&kind=$kind target='_top'> <img src='./save/$userfile' width=100 height=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+										echo ("<font color=black   size=2>$writer&nbsp;지음</font><br><img src='./images/bookHolderBar.png' width=100 border=0> </td>");
+
+										$counter = $counter + 1;
+									endwhile;
+								}
+								echo ("</tr></table>");
+						
+							
+
+
+				?>
+
+				</td>
+
+				</table> 
+</div>
+            <div class="swiper-slide"> 			
+			<table height='350'>
+				<td width=100% align='center'>
+				<?PHP	
+
+								$con = mysql_connect("localhost","dpsw23","dbfak333");
+								mysql_select_db("dpsw23",$con);
+
+								// 한글 변환
+								mysql_query("set session character_set_connection=utf8;");
+								mysql_query("set session character_set_results=utf8;");
+								mysql_query("set session character_set_client=utf8;");
+
+
+								
+							  $kind = 1;
+
+								
+								  	   $result = mysql_query("select * from product where kind=$kind order by id desc", $con);
+									   //echo ("<img src='./images/best.jpg' width=650 border=0 align=center><br>");
+										
+
+								$total = mysql_num_rows($result);
+								
+
+								
+								echo ("<table border=0 width=600> <td align=center width=200 bgcolor=#28aoff> <a href=./p-list.php?kind=1 target=_top> <font color=white>보여주는 책</font></a> </td> </table>");
+								echo   ("<table border=0 width=600 height=200 background='images/bookHolder.jpg'><tr>");
+								
+								
+
+								if (!$total){
+									echo ("<td align=center><font color=red>아직 등록된 상품이 없습니다</td>");
+								}	else {
+											  if ($cpage=='') $cpage=1; // $cpage -  현재 페이지 번호
+											  $pagesize = 3;              // $pagesize - 한 페이지에 출력할 목록 개수
+
+											  $totalpage = (int)($total/$pagesize);
+											  if (($total%$pagesize)!=0) $totalpage = $totalpage + 1;
+
+											  $counter=0;
+
+											  while($counter<$pagesize && $counter < 15):
+												$newcounter=($cpage-1)*$pagesize+$counter; // 실제 결과 레코드 카운터
+												if ($newcounter == $total) break; 
+
+										if ($newcounter > 0 && ($newcounter % 3) == 0) echo ("</tr><tr><td colspan=3></td></tr><tr>");
+
+										$code=mysql_result($result,$newcounter,"code");
+										$name=mysql_result($result,$newcounter,"name");
+										$userfile=mysql_result($result,$newcounter,"userfile");
+										$writer=mysql_result($result,$newcounter,"writer");
+
+										echo ("<td width=135  align=center><a href=p-show.php?code=$code&kind=$kind target='_top'> <img src='./save/$userfile' width=100 height=100 border=0><br><font color=blue style='text- decoration:none;   font-size:10pt;'>$name</a></font><br>");
+										echo ("<font color=black   size=2>$writer&nbsp;지음</font><br><img src='./images/bookHolderBar.png' width=100 border=0> </td>");
+
+										$counter = $counter + 1;
+									endwhile;
+								}
+								echo ("</tr></table>");
+							
+
+
+				?>
+
+				</td>
+
+				</table> 
+		</div>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="./js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 30
+    });
+    </script>
+</body>
+</html>
